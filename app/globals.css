@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f7f9fd;
+  --foreground: #0c214f;
+  --brand: #2165ea;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-poppins), "Poppins", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-poppins), "Poppins", system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: rgba(33, 101, 234, 0.2);
+  color: #0c214f;
+}
+
+.brand-underline {
+  background-image: linear-gradient(120deg, #2165ea 0%, #5285f8 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.35em;
+  background-position: 0 88%;
+}
