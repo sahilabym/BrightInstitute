@@ -12,41 +12,41 @@ export default function HeroSection() {
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-accent-400 backdrop-blur">
             <span className="h-2 w-2 rounded-full bg-accent-400 animate-pulse" />
-            Admissions Open · 2026
+            Admissions Open · Session 2026–27
           </span>
           <h1 className="mt-6 font-extrabold leading-[1.05] text-4xl sm:text-5xl lg:text-6xl">
-            Where Curious Minds
+            Where Young Minds
             <br />
-            Become <span className="text-accent-400">Extraordinary</span>
+            Grow <span className="text-accent-400">Brighter</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg text-white/85 leading-relaxed">
-            Bright Institute blends timeless academic rigor with modern
-            innovation. Learn from world-class faculty, build lifelong networks,
-            and shape a career of real impact.
+            Bright School blends the CBSE curriculum with holistic learning —
+            from Nursery to Grade 12. Caring teachers, safe campus, and a strong
+            focus on academics, sports, and values.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href="/register"
               className="rounded-lg bg-white px-7 py-3.5 font-semibold text-brand-600 shadow-lg transition hover:-translate-y-0.5 hover:bg-brand-50"
             >
-              Register Now →
+              Apply for Admission →
             </Link>
             <Link
               href="/courses"
               className="rounded-lg border-2 border-white/40 px-7 py-3.5 font-semibold text-white transition hover:border-white hover:bg-white/10"
             >
-              Explore Programs
+              View Academics
             </Link>
           </div>
 
           <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-white/75">
             <div className="flex items-center gap-2">
               <span className="text-accent-400">★★★★★</span>
-              <span>Ranked #1 in region</span>
+              <span>CBSE Affiliated · Grades Nursery–12</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-white/60" />
-              <span>60+ countries represented</span>
+              <span>25+ years of academic excellence</span>
             </div>
           </div>
         </div>
@@ -60,15 +60,15 @@ export default function HeroSection() {
               </div>
               <div>
                 <div className="font-semibold">Admission Snapshot</div>
-                <div className="text-xs text-white/70">Fall 2026 intake</div>
+                <div className="text-xs text-white/70">Session 2026–27</div>
               </div>
             </div>
             <div className="mt-6 grid grid-cols-2 gap-4">
               {[
-                { k: "Programs", v: "24" },
-                { k: "Faculty", v: "350+" },
-                { k: "Students", v: "12K" },
-                { k: "Placement", v: "96%" },
+                { k: "Grades", v: "Nur–12" },
+                { k: "Teachers", v: "120+" },
+                { k: "Students", v: "2,400" },
+                { k: "Board Result", v: "98%" },
               ].map((s) => (
                 <div
                   key={s.k}
@@ -82,7 +82,7 @@ export default function HeroSection() {
               ))}
             </div>
             <div className="mt-5 rounded-xl bg-brand-500/40 p-4 text-sm">
-              🎓 Apply by 31 August to receive an early-decision scholarship.
+              🎒 Apply by 31 March for the 2026–27 academic session.
             </div>
           </div>
           <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-full bg-accent-400/30 blur-2xl" />

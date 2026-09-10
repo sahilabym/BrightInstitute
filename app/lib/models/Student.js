@@ -15,9 +15,9 @@ const StudentSchema = new mongoose.Schema(
     course: { type: String, required: true },
     gender: { type: String, enum: ["male", "female", "other"] },
     address: { type: String, trim: true },
-    password: { type: String, required: true },
+    consent: { type: Boolean, required: true },
   },
-  { timestamps: { createdAt: "createdAt", updatedAt: "updatedAt" } }
+  { timestamps: true }
 );
 
 export default mongoose.models.Student ||

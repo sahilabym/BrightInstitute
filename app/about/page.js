@@ -1,32 +1,32 @@
 export const metadata = {
   title: "About Us",
   description:
-    "Learn about Bright Institute's history, mission, vision, and world-class faculty.",
+    "Learn about Bright School's history, mission, vision, and dedicated teaching faculty.",
 };
 
 const faculty = [
   {
-    name: "Dr. Meera Krishnan",
-    role: "Dean, School of Sciences",
-    bio: "20+ years in computational biology. Fulbright Scholar with 60+ publications.",
+    name: "Mrs. Anjali Verma",
+    role: "Principal",
+    bio: "M.A., B.Ed. with 25+ years in school leadership. CBSE Resource Person.",
   },
   {
-    name: "Prof. Alexander Wright",
-    role: "Chair, Business School",
-    bio: "Former McKinsey partner. Author of 'Strategy in Motion' (Harvard Press).",
+    name: "Mr. Rajeev Kapoor",
+    role: "Vice-Principal (Senior Wing)",
+    bio: "Physics educator with 18 years experience mentoring board and JEE aspirants.",
   },
   {
-    name: "Dr. Yuki Nakamura",
-    role: "Head, Department of Literature",
-    bio: "Comparative literature scholar and award-winning translator.",
+    name: "Ms. Sunita Rao",
+    role: "Headmistress (Primary Wing)",
+    bio: "Early-childhood specialist focused on activity-based, joyful learning.",
   },
 ];
 
 const milestones = [
-  { year: "1985", text: "Founded as a small liberal arts college." },
-  { year: "1998", text: "Launched School of Sciences & Engineering." },
-  { year: "2011", text: "Introduced Business School and MBA program." },
-  { year: "2024", text: "Ranked #1 in region, 12,000+ students strong." },
+  { year: "2000", text: "Founded as a small pre-primary school with 60 students." },
+  { year: "2008", text: "Upgraded to Senior Secondary with CBSE affiliation." },
+  { year: "2015", text: "New campus with smart classrooms, labs, and sports ground." },
+  { year: "2024", text: "2,400+ students; 98% Class 12 board pass rate." },
 ];
 
 export default function AboutPage() {
@@ -36,13 +36,13 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-hero-radial" />
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <span className="rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest">
-            Since 1985
+            Since 2000
           </span>
           <h1 className="mt-4 text-4xl font-extrabold sm:text-5xl">
-            About <span className="text-accent-400">Bright Institute</span>
+            About <span className="text-accent-400">Bright School</span>
           </h1>
           <p className="mt-4 text-lg text-white/85">
-            Four decades of shaping thinkers, leaders, and change-makers.
+            25 years of nurturing children into confident, curious, and caring young adults.
           </p>
         </div>
       </section>
@@ -56,9 +56,8 @@ export default function AboutPage() {
             </div>
             <h3 className="mt-4 text-2xl font-bold text-brand-900">Our Mission</h3>
             <p className="mt-3 text-brand-900/75 leading-relaxed">
-              To cultivate curious, rigorous, and compassionate minds by providing
-              transformative academic experiences rooted in inquiry, integrity,
-              and inclusion.
+              To nurture curious, confident, and compassionate children through
+              a balanced blend of strong academics, sports, arts, and moral values.
             </p>
           </div>
           <div className="rounded-2xl border border-accent-400/40 bg-accent-400/10 p-8 shadow-sm">
@@ -67,9 +66,8 @@ export default function AboutPage() {
             </div>
             <h3 className="mt-4 text-2xl font-bold text-brand-900">Our Vision</h3>
             <p className="mt-3 text-brand-900/75 leading-relaxed">
-              A globally respected institute where scholarship, creativity, and
-              civic responsibility converge to advance knowledge and human
-              wellbeing.
+              To be a school where every child feels safe, valued, and inspired
+              to become a lifelong learner and responsible citizen.
             </p>
           </div>
         </div>

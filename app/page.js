@@ -5,57 +5,57 @@ import { COURSES } from "./lib/courses";
 export const metadata = {
   title: "Home",
   description:
-    "Bright Institute — where tradition meets innovation. Explore world-class academic programs.",
+    "Bright School — CBSE-affiliated K–12 education blending strong academics, sports, and values.",
 };
 
 const stats = [
-  { label: "Years of Excellence", value: "40+" },
-  { label: "Enrolled Students", value: "12,000+" },
-  { label: "Expert Faculty", value: "350+" },
-  { label: "Global Partners", value: "80+" },
+  { label: "Years of Excellence", value: "25+" },
+  { label: "Happy Students", value: "2,400+" },
+  { label: "Qualified Teachers", value: "120+" },
+  { label: "Board Result", value: "98%" },
 ];
 
 const features = [
   {
-    icon: "🎓",
-    title: "World-Class Faculty",
-    text: "Learn from leading scholars, researchers, and industry veterans.",
+    icon: "📚",
+    title: "CBSE Curriculum",
+    text: "Structured NCERT-aligned learning from Nursery through Grade 12.",
   },
   {
-    icon: "🌐",
-    title: "Global Exposure",
-    text: "Exchange programs across 20+ partner universities worldwide.",
+    icon: "🧪",
+    title: "Smart Classrooms & Labs",
+    text: "Interactive boards, Science labs, Computer lab, and a well-stocked library.",
   },
   {
-    icon: "💼",
-    title: "Career Ready",
-    text: "96% placement rate with dedicated mentorship and internships.",
+    icon: "⚽",
+    title: "Sports & Arts",
+    text: "Football, cricket, athletics, music, dance, and drama for all-round growth.",
   },
   {
-    icon: "🔬",
-    title: "Modern Labs",
-    text: "State-of-the-art research facilities and creative studios.",
+    icon: "🛡️",
+    title: "Safe & Caring Campus",
+    text: "CCTV-monitored premises, trained staff, and a nurturing environment.",
   },
 ];
 
 const testimonials = [
   {
     quote:
-      "Bright shaped the way I think. The faculty push you to be curious, rigorous, and kind.",
-    name: "Priya Sharma",
-    role: "MBA, Class of 2023",
+      "The teachers know my child by name. He looks forward to school every morning.",
+    name: "Ritu Sharma",
+    role: "Parent, Grade 3",
   },
   {
     quote:
-      "The Computer Science program is world-class. I landed a role at a top firm right out of college.",
-    name: "Daniel Okafor",
-    role: "B.Sc. CS, Class of 2024",
+      "Bright School helped me score 96% in Class 12 Science. The teachers guided me through JEE prep too.",
+    name: "Arjun Mehta",
+    role: "Alumnus, Batch of 2024",
   },
   {
     quote:
-      "A campus that felt like family. I found mentors, friends, and my purpose here.",
-    name: "Aiko Tanaka",
-    role: "B.A. Literature, Class of 2022",
+      "From nursery rhymes to board exams — my daughter has grown into a confident young adult here.",
+    name: "Meera Iyer",
+    role: "Parent, Grade 10",
   },
 ];
 
@@ -86,13 +86,13 @@ export default function HomePage() {
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-xs font-bold uppercase tracking-widest text-brand-500">
-            Why Bright
+            Why Bright School
           </span>
           <h2 className="mt-2 text-3xl font-extrabold text-brand-900 sm:text-4xl">
-            An education built to <span className="brand-underline">last a lifetime</span>
+            An education that shapes <span className="brand-underline">the whole child</span>
           </h2>
           <p className="mt-3 text-brand-900/70">
-            Every program is designed around rigor, mentorship, and real-world impact.
+            Strong academics, sports, arts, and values — every day, in every classroom.
           </p>
         </div>
 
@@ -120,17 +120,17 @@ export default function HomePage() {
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
             <div>
               <span className="text-xs font-bold uppercase tracking-widest text-brand-500">
-                Programs
+                Academics
               </span>
               <h2 className="mt-2 text-3xl font-extrabold text-brand-900 sm:text-4xl">
-                Featured Courses
+                Explore Our Grades
               </h2>
             </div>
             <Link
               href="/courses"
               className="text-sm font-semibold text-brand-500 hover:text-brand-600"
             >
-              View all programs →
+              View all grades →
             </Link>
           </div>
 
@@ -153,7 +153,7 @@ export default function HomePage() {
                   href="/register"
                   className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand-500 hover:gap-2 hover:text-brand-600 transition-all"
                 >
-                  Apply Now →
+                  Enroll Now →
                 </Link>
               </article>
             ))}
@@ -169,7 +169,7 @@ export default function HomePage() {
               Voices
             </span>
             <h2 className="mt-2 text-3xl font-extrabold sm:text-4xl">
-              Stories from our students
+              What parents & students say
             </h2>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -208,16 +208,16 @@ export default function HomePage() {
           <div className="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-accent-400/20 blur-3xl" />
           <div className="relative">
             <h2 className="text-3xl font-extrabold sm:text-4xl">
-              Ready to begin your journey?
+              Give your child a bright start
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-white/80">
-              Admissions for the 2026 academic year are now open. Secure your seat today.
+              Admissions for the 2026–27 session are open — Nursery through Grade 12. Limited seats.
             </p>
             <Link
               href="/register"
               className="mt-8 inline-block rounded-lg bg-accent-400 px-8 py-3.5 font-semibold text-brand-900 shadow-lg transition hover:-translate-y-0.5 hover:bg-accent-500"
             >
-              Register Now →
+              Apply for Admission →
             </Link>
           </div>
         </div>

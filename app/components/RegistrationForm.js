@@ -1,46 +1,82 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
-import { registrationSchema } from "../lib/validation";
 import { COURSES } from "../lib/courses";
-import Button from "./Button";
-import Input from "./Input";
+
+const initialForm = {
+  fullName: "",
+  email: "",
+  phone: "",
+  dob: "",
+  course: "",
+  gender: "",
+  address: "",
+  consent: false,
+};
 
 export default function RegistrationForm() {
+  const [form, setForm] = useState(initialForm);
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState("");
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({
-    resolver: zodResolver(registrationSchema),
-    defaultValues: { gender: "" },
-  });
+  const now = new Date();
+  const maxDate = new Date(now.getFullYear() - 3, now.getMonth(), now.getDate())
+    .toISOString()
+    .split("T")[0];
+  const minDate = new Date(now.getFullYear() - 19, 0, 1)
+    .toISOString()
+    .split("T")[0];
 
-  const onSubmit = async (data) => {
-    setSubmitting(true);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((f) => {
+      const next = { ...f, [name]: value };
+
+      // Push whatever we have so far into the widget. Merge semantic —
+      // name updates without wiping DOB and vice versa.
+      if (name === "dob") {
+        console.log("[DOB]", value);
+        window.Anumati?.identify?.({
+          dateOfBirth: value,
+          // name: next.fullName, // ← pass current name too
+        });
+      }
+
+      if (name === "fullName") {
+        console.log("[Name]", value);
+        window.Anumati?.identify?.({ name: value }); // ← new
+      }
+
+      return next;
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    if (e?.preventDefault) e.preventDefault();
+    console.log("[form] click → hitting API with:", form);
     setServerError("");
+    setSubmitting(true);
+
     try {
       const res = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(form),
       });
-      const json = await res.json();
+      console.log("[form] status:", res.status);
+      const json = await res.json().catch(() => ({}));
+      console.log("[form] body:", json);
+
       if (!res.ok) {
-        setServerError(json.error || "Registration failed");
+        setServerError(json.error || `Failed (${res.status})`);
         toast.error(json.error || "Registration failed");
         return;
       }
-      toast.success("Registration successful! Welcome aboard.");
-      reset();
+      toast.success("Registration successful!");
+      setForm(initialForm);
     } catch (err) {
+      console.error("[form] fetch error:", err);
       setServerError("Network error. Please try again.");
       toast.error("Network error");
     } finally {
@@ -48,84 +84,103 @@ export default function RegistrationForm() {
     }
   };
 
+  const field =
+    "w-full rounded-lg border border-brand-100 bg-white px-3.5 py-2.5 text-sm font-medium shadow-sm outline-none transition placeholder:font-normal placeholder:text-brand-900/40 focus:ring-4 focus:ring-brand-500/15 focus:border-brand-500";
+  const label = "mb-1.5 block text-sm font-semibold text-brand-900";
+
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="grid gap-5 md:grid-cols-2"
-      noValidate
-    >
-      <Input
-        label="Full Name *"
-        placeholder="Jane Doe"
-        {...register("fullName")}
-        error={errors.fullName?.message}
-      />
-      <Input
-        label="Email *"
-        type="email"
-        placeholder="you@example.com"
-        {...register("email")}
-        error={errors.email?.message}
-      />
-      <Input
-        label="Phone Number *"
-        placeholder="+1 555 123 4567"
-        {...register("phone")}
-        error={errors.phone?.message}
-      />
-      <Input
-        label="Date of Birth"
-        type="date"
-        {...register("dob")}
-        error={errors.dob?.message}
-      />
-      <Input
-        as="select"
-        label="Course *"
-        {...register("course")}
-        error={errors.course?.message}
-      >
-        <option value="">Select a program</option>
-        {COURSES.map((c) => (
-          <option key={c.slug} value={c.name}>
-            {c.name}
-          </option>
-        ))}
-      </Input>
-      <Input
-        as="select"
-        label="Gender *"
-        {...register("gender")}
-        error={errors.gender?.message}
-      >
-        <option value="">Select gender</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
-      </Input>
-      <div className="md:col-span-2">
-        <Input
-          as="textarea"
-          label="Address"
-          placeholder="Street, City, State"
-          {...register("address")}
-          error={errors.address?.message}
+    <form onSubmit={handleSubmit} className="grid gap-5 md:grid-cols-2">
+      <div>
+        <label className={label}>Student's Full Name</label>
+        <input
+          name="fullName"
+          value={form.fullName}
+          onChange={handleChange}
+          placeholder="e.g. Aarav Sharma"
+          className={field}
         />
       </div>
-      <Input
-        label="Password *"
-        type="password"
-        placeholder="Minimum 8 characters"
-        {...register("password")}
-        error={errors.password?.message}
-      />
-      <Input
-        label="Confirm Password *"
-        type="password"
-        placeholder="Re-enter password"
-        {...register("confirmPassword")}
-        error={errors.confirmPassword?.message}
-      />
+
+      <div>
+        <label className={label}>Parent's Email</label>
+        <input
+          type="email"
+          name="email"
+          value={form.email}
+          onChange={handleChange}
+          placeholder="parent@example.com"
+          className={field}
+        />
+      </div>
+
+      <div>
+        <label className={label}>Parent's Phone Number</label>
+        <input
+          name="phone"
+          value={form.phone}
+          onChange={handleChange}
+          placeholder="+91 98765 43210"
+          className={field}
+        />
+      </div>
+
+      <div>
+        <label className={label}>Date of Birth</label>
+        <input
+          id="da-minor-consent"
+          type="date"
+          name="dob"
+          value={form.dob}
+          min={minDate}
+          max={maxDate}
+          onChange={handleChange}
+          className={field}
+        />
+      </div>
+
+      <div>
+        <label className={label}>Grade / Class</label>
+        <select
+          name="course"
+          value={form.course}
+          onChange={handleChange}
+          className={field}
+        >
+          <option value="">Select a grade</option>
+          {COURSES.map((c) => (
+            <option key={c.slug} value={c.name}>
+              {c.name}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        <label className={label}>Gender</label>
+        <select
+          name="gender"
+          value={form.gender}
+          onChange={handleChange}
+          className={field}
+        >
+          <option value="">Select gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div className="md:col-span-2">
+        <label className={label}>Address</label>
+        <textarea
+          name="address"
+          value={form.address}
+          onChange={handleChange}
+          placeholder="Street, City, State"
+          rows={4}
+          className={field}
+        />
+      </div>
 
       {serverError && (
         <div className="md:col-span-2 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
@@ -133,10 +188,33 @@ export default function RegistrationForm() {
         </div>
       )}
 
+      <div className="md:col-span-2">
+        <label className="flex items-center gap-2 cursor-pointer">
+          <input
+            type="checkbox"
+            name="consent"
+            da-trigger="student_registration_for_bright_institute"
+            checked={form.consent}
+            onChange={handleChange}
+            className="h-4 w-4 rounded border-brand-300 text-brand-500 focus:ring-2 focus:ring-brand-500/30 cursor-pointer"
+          />
+          <span className="text-sm text-brand-900/85">
+            I agree to the processing of my personal data under the{" "}
+            <span className="font-semibold text-brand-500">DPDP Act, 2023</span>
+            .
+          </span>
+        </label>
+      </div>
+
       <div className="md:col-span-2 flex justify-end">
-        <Button type="submit" variant="primary" disabled={submitting}>
-          {submitting ? "Submitting…" : "Create Account →"}
-        </Button>
+        <button
+          type="submit"
+          onClick={handleSubmit}
+          disabled={submitting}
+          className="inline-flex items-center justify-center rounded-lg bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-brand-600 disabled:opacity-60 disabled:cursor-not-allowed"
+        >
+          {submitting ? "Submitting…" : "Submit Enquiry →"}
+        </button>
       </div>
     </form>
   );

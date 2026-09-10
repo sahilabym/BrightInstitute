@@ -7,7 +7,7 @@ import { useState } from "react";
 const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/courses", label: "Courses" },
+  { href: "/courses", label: "Academics" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -24,14 +24,14 @@ export default function Navbar() {
         {/* Logo — bold, easy to read */}
         <Link href="/" className="flex items-center gap-3 group">
           <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand-gradient font-extrabold text-white text-lg shadow-soft transition-transform group-hover:scale-105">
-            A
+            B
           </span>
           <span className="flex flex-col leading-tight">
             <span className="font-extrabold text-xl sm:text-2xl tracking-tight text-brand-900">
-              Bright <span className="text-brand-500">Institute</span>
+              Bright <span className="text-brand-500">School</span>
             </span>
             <span className="text-[10px] sm:text-xs font-medium uppercase tracking-[0.18em] text-brand-500/80">
-              School of Higher Learning
+              Nursery to Grade 12 · CBSE
             </span>
           </span>
         </Link>
@@ -59,7 +59,7 @@ export default function Navbar() {
               href="/register"
               className="rounded-lg bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-brand-600"
             >
-              Register
+              Admissions
             </Link>
           </li>
         </ul>
@@ -113,7 +113,7 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className="mt-2 block rounded-lg bg-brand-500 px-3 py-2.5 text-center font-semibold text-white shadow-soft"
               >
-                Register
+                Admissions
               </Link>
             </li>
           </ul>

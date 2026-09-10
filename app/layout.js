@@ -14,11 +14,11 @@ const poppins = Poppins({
 
 export const metadata = {
   title: {
-    default: "Bright Institute — Higher Learning",
-    template: "%s | Bright Institute",
+    default: "Bright School — Nursery to Grade 12",
+    template: "%s | Bright School",
   },
   description:
-    "Bright Institute offers world-class undergraduate and postgraduate programs across sciences, arts, and business.",
+    "Bright School offers CBSE-affiliated, holistic K–12 education from Pre-Primary to Grade 12 across Science, Commerce, and Humanities streams.",
 };
 
 export default function RootLayout({ children }) {
@@ -28,6 +28,7 @@ export default function RootLayout({ children }) {
         <script
           async
           src="https://cdn.digitalanumati.com/uat/v1/anumati-dpdp-consent-v1.js"
+          // src="http://localhost:4173/anumati-dpdp-consent-v1.js"
           data-site-key="APP_bright-institute_1789019751799"
           application-id="d522836a-b10d-42e6-a9e0-35a69ba030d4"
         ></script>

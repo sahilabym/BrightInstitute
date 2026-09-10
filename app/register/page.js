@@ -1,9 +1,9 @@
 import RegistrationForm from "../components/RegistrationForm";
 
 export const metadata = {
-  title: "Student Registration",
+  title: "Admissions",
   description:
-    "Register as a student at Bright Institute. Create your account to apply for a program.",
+    "Apply for admission to Bright School. Fill in your child's details for the 2026–27 session.",
 };
 
 export default function RegisterPage() {
@@ -13,13 +13,13 @@ export default function RegisterPage() {
         <div className="absolute inset-0 bg-hero-radial" />
         <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
           <span className="rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest">
-            Admissions 2026
+            Admissions 2026–27
           </span>
           <h1 className="mt-4 text-4xl font-extrabold sm:text-5xl">
-            Student <span className="text-accent-400">Registration</span>
+            Admission <span className="text-accent-400">Enquiry</span>
           </h1>
           <p className="mt-3 text-white/85">
-            Create your account to apply for admission. Takes under 2 minutes.
+            Fill in your child's details to begin the admission process. Takes under 2 minutes.
           </p>
         </div>
       </section>

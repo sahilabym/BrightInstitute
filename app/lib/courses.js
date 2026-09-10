@@ -1,44 +1,51 @@
 export const COURSES = [
   {
-    slug: "bsc-cs",
-    name: "B.Sc. Computer Science",
-    duration: "3 Years",
+    slug: "pre-primary",
+    name: "Pre-Primary (Nursery – KG)",
+    duration: "Ages 3–5",
     description:
-      "Foundations of computing, algorithms, software engineering, and modern application development.",
+      "Play-based early learning that builds curiosity, motor skills, language, and social confidence.",
   },
   {
-    slug: "ba-english",
-    name: "B.A. English Literature",
-    duration: "3 Years",
+    slug: "primary",
+    name: "Primary School (Grades 1–5)",
+    duration: "Ages 6–10",
     description:
-      "Explore world literature, critical theory, and creative writing across historical periods.",
+      "Strong foundations in literacy, numeracy, environmental studies, and creative expression.",
   },
   {
-    slug: "bcom",
-    name: "B.Com. Accounting & Finance",
-    duration: "3 Years",
+    slug: "middle",
+    name: "Middle School (Grades 6–8)",
+    duration: "Ages 11–13",
     description:
-      "Accounting, corporate finance, taxation, and business analytics for the modern economy.",
+      "Conceptual learning across Math, Science, Social Studies, and Languages with project-based work.",
   },
   {
-    slug: "mba",
-    name: "MBA — Business Administration",
-    duration: "2 Years",
+    slug: "secondary",
+    name: "Secondary (Grades 9–10, CBSE)",
+    duration: "Ages 14–15",
     description:
-      "Leadership, strategy, and management skills for aspiring business professionals.",
+      "CBSE curriculum preparing students for board exams with focused academics and skill electives.",
   },
   {
-    slug: "mca",
-    name: "MCA — Master of Computer Applications",
-    duration: "2 Years",
+    slug: "sr-secondary-science",
+    name: "Sr. Secondary — Science (Grades 11–12)",
+    duration: "Ages 16–17",
     description:
-      "Advanced software engineering, data systems, and AI-driven application development.",
+      "PCM / PCB streams with lab-driven learning, competitive exam prep (JEE / NEET), and research projects.",
   },
   {
-    slug: "diploma-design",
-    name: "Diploma in Graphic Design",
-    duration: "1 Year",
+    slug: "sr-secondary-commerce",
+    name: "Sr. Secondary — Commerce (Grades 11–12)",
+    duration: "Ages 16–17",
     description:
-      "Visual communication, branding, typography, and industry-standard design tools.",
+      "Accountancy, Business Studies, Economics, and Mathematics for future entrepreneurs and analysts.",
+  },
+  {
+    slug: "sr-secondary-humanities",
+    name: "Sr. Secondary — Humanities (Grades 11–12)",
+    duration: "Ages 16–17",
+    description:
+      "History, Political Science, Psychology, and Literature for critical thinkers and creators.",
   },
 ];

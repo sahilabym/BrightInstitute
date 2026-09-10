@@ -2,9 +2,9 @@ import Link from "next/link";
 import { COURSES } from "../lib/courses";
 
 export const metadata = {
-  title: "Courses & Programs",
+  title: "Academics",
   description:
-    "Explore undergraduate, postgraduate, and diploma programs offered at Bright Institute.",
+    "Explore Bright School's academic offerings from Pre-Primary through Grade 12 (CBSE).",
 };
 
 export default function CoursesPage() {
@@ -14,13 +14,13 @@ export default function CoursesPage() {
         <div className="absolute inset-0 bg-hero-radial" />
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <span className="rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest">
-            Academic Catalog
+            CBSE Curriculum · Nur–12
           </span>
           <h1 className="mt-4 text-4xl font-extrabold sm:text-5xl">
-            Our <span className="text-accent-400">Programs</span>
+            Our <span className="text-accent-400">Academics</span>
           </h1>
           <p className="mt-4 text-lg text-white/85">
-            Diverse pathways for undergraduate, postgraduate, and professional learners.
+            A structured learning journey from Pre-Primary through Grade 12 — Science, Commerce & Humanities.
           </p>
         </div>
       </section>
@@ -47,7 +47,7 @@ export default function CoursesPage() {
                   href="/register"
                   className="mt-5 inline-flex items-center gap-1 rounded-lg bg-brand-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:gap-2 hover:bg-brand-600"
                 >
-                  Apply Now →
+                  Enroll Now →
                 </Link>
               </div>
             </article>

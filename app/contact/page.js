@@ -66,9 +66,9 @@ export default function ContactPage() {
 
           <div className="mt-8 space-y-5">
             {[
-              { icon: "📍", label: "Address", value: "123 Scholar Avenue, Learning City, LC 45678" },
-              { icon: "✉️", label: "Email", value: "hello@Bright-institute.edu" },
-              { icon: "📞", label: "Phone", value: "+1 (555) 123-4567" },
+              { icon: "📍", label: "Address", value: "123 School Road, Sector 21, New Delhi 110075" },
+              { icon: "✉️", label: "Email", value: "admissions@brightschool.edu.in" },
+              { icon: "📞", label: "Phone", value: "+91 98765 43210" },
             ].map((item) => (
               <div key={item.label} className="flex items-start gap-4 rounded-xl border border-brand-100 bg-white p-4 shadow-sm">
                 <div className="grid h-10 w-10 place-items-center rounded-lg bg-brand-500/10 text-lg">
