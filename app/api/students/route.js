@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
-import { connectDB } from "@/app/lib/db";
-import Student from "@/app/lib/models/Student";
+import { connectDB } from "../../lib/db";
+import Student from "../../lib/models/Student";
+
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 export async function GET() {
   try {

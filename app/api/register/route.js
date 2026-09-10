@@ -1,8 +1,11 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import { connectDB } from "@/app/lib/db";
-import Student from "@/app/lib/models/Student";
-import { registrationSchema } from "@/app/lib/validation";
+import { connectDB } from "../../lib/db";
+import Student from "../../lib/models/Student";
+import { registrationSchema } from "../../lib/validation";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function POST(req) {
   try {

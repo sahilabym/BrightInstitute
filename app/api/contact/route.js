@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
-import { connectDB } from "@/app/lib/db";
-import Contact from "@/app/lib/models/Contact";
-import { contactSchema } from "@/app/lib/validation";
+import { connectDB } from "../../lib/db";
+import Contact from "../../lib/models/Contact";
+import { contactSchema } from "../../lib/validation";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function POST(req) {
   try {

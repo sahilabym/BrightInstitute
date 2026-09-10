@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
-import { registrationSchema } from "@/app/lib/validation";
-import { COURSES } from "@/app/lib/courses";
+import { registrationSchema } from "../lib/validation";
+import { COURSES } from "../lib/courses";
 import Button from "./Button";
 import Input from "./Input";
 
