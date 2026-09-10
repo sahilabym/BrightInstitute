@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
           async
           src="https://cdn.digitalanumati.com/uat/v1/anumati-dpdp-consent-v1.js"
           // src="http://localhost:4173/anumati-dpdp-consent-v1.js"
-          data-site-key="APP_bright-institute_1789019751799"
+          data-site-key="APP_httpsbright-school-webvercelapp_1789037524790"
           application-id="d522836a-b10d-42e6-a9e0-35a69ba030d4"
         ></script>
       </head>
