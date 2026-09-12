@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { COURSES } from "../lib/courses";
 
@@ -28,19 +28,12 @@ export default function RegistrationForm() {
     .toISOString()
     .split("T")[0];
 
-  const referenceId = useMemo(() => {
-    if (typeof crypto !== "undefined" && crypto.randomUUID) {
-      return crypto.randomUUID();
-    }
-    return `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
-  }, []);
+  const [referenceId, setReferenceId] = useState("");
 
-  // const referenceId = "sahil@gmail.com";
-
-  useEffect(() => {
-    console.log("[ReferenceId]", referenceId);
-    window.Anumati?.identify?.({ referenceId });
-  }, [referenceId]);
+  const generateReferenceId = () =>
+    typeof crypto !== "undefined" && crypto.randomUUID
+      ? crypto.randomUUID()
+      : `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -65,6 +58,14 @@ export default function RegistrationForm() {
 
       return next;
     });
+  };
+
+  // Fires on every click of the consent label/checkbox → fresh UUID each time
+  const handleConsentClick = () => {
+    const newRef = generateReferenceId();
+    setReferenceId(newRef);
+    console.log("[ReferenceId]", newRef);
+    window.Anumati?.identify?.({ referenceId: newRef });
   };
 
   const handleSubmit = async (e) => {
@@ -218,16 +219,23 @@ export default function RegistrationForm() {
       )}
 
       <div className="md:col-span-2">
-        <label className="flex items-center gap-2 cursor-pointer">
+        <label
+          className="flex items-center gap-2 cursor-pointer"
+          onPointerDown={handleConsentClick}
+        >
           <input
             type="checkbox"
             name="consent"
             da-trigger="bright_school_student_registration"
             checked={form.consent}
+            onPointerDown={handleConsentClick}
             onChange={handleChange}
             className="h-4 w-4 rounded border-brand-300 text-brand-500 focus:ring-2 focus:ring-brand-500/30 cursor-pointer"
           />
-          <span className="text-sm text-brand-900/85">
+          <span
+            className="text-sm text-brand-900/85"
+            onPointerDown={handleConsentClick}
+          >
             I agree to the processing of my personal data under the{" "}
             <span className="font-semibold text-brand-500">DPDP Act, 2023</span>
             .
