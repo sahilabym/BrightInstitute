@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { COURSES } from "../lib/courses";
 
@@ -28,10 +28,25 @@ export default function RegistrationForm() {
     .toISOString()
     .split("T")[0];
 
+  const referenceId = useMemo(() => {
+    if (typeof crypto !== "undefined" && crypto.randomUUID) {
+      return crypto.randomUUID();
+    }
+    return `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+  }, []);
+
+  // const referenceId = "sahil@gmail.com";
+
+  useEffect(() => {
+    console.log("[ReferenceId]", referenceId);
+    window.Anumati?.identify?.({ referenceId });
+  }, [referenceId]);
+
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setForm((f) => {
-      const next = { ...f, [name]: value };
+      const fieldValue = type === "checkbox" ? checked : value;
+      const next = { ...f, [name]: fieldValue };
 
       // Push whatever we have so far into the widget. Merge semantic —
       // name updates without wiping DOB and vice versa.
@@ -62,7 +77,7 @@ export default function RegistrationForm() {
       const res = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, referenceId }),
       });
       console.log("[form] status:", res.status);
       const json = await res.json().catch(() => ({}));
@@ -100,8 +115,21 @@ export default function RegistrationForm() {
           className={field}
         />
       </div>
-
       <div>
+        <label className={label}>Date of Birth</label>
+        <input
+          id="da-minor-consent"
+          type="date"
+          name="dob"
+          value={form.dob}
+          min={minDate}
+          max={maxDate}
+          onChange={handleChange}
+          className={field}
+        />
+      </div>
+
+      {/* <div>
         <label className={label}>Parent's Email</label>
         <input
           type="email"
@@ -122,21 +150,7 @@ export default function RegistrationForm() {
           placeholder="+91 98765 43210"
           className={field}
         />
-      </div>
-
-      <div>
-        <label className={label}>Date of Birth</label>
-        <input
-          id="da-minor-consent"
-          type="date"
-          name="dob"
-          value={form.dob}
-          min={minDate}
-          max={maxDate}
-          onChange={handleChange}
-          className={field}
-        />
-      </div>
+      </div> */}
 
       <div>
         <label className={label}>Grade / Class</label>
@@ -209,8 +223,8 @@ export default function RegistrationForm() {
       <div className="md:col-span-2 flex justify-end">
         <button
           type="submit"
-          onClick={handleSubmit}
-          disabled={submitting}
+          // onClick={handleSubmit}
+          disabled={submitting || !form.consent}
           className="inline-flex items-center justify-center rounded-lg bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-brand-600 disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {submitting ? "Submitting…" : "Submit Enquiry →"}
