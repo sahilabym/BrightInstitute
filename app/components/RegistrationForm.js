@@ -106,17 +106,22 @@ export default function RegistrationForm() {
   return (
     <form onSubmit={handleSubmit} className="grid gap-5 md:grid-cols-2">
       <div>
-        <label className={label}>Student's Full Name</label>
+        <label className={label}>
+          Student's Full Name <span className="text-red-500">*</span>
+        </label>
         <input
           name="fullName"
           value={form.fullName}
           onChange={handleChange}
           placeholder="e.g. Aarav Sharma"
+          required
           className={field}
         />
       </div>
       <div>
-        <label className={label}>Date of Birth</label>
+        <label className={label}>
+          Date of Birth <span className="text-red-500">*</span>
+        </label>
         <input
           id="da-minor-consent"
           type="date"
@@ -125,6 +130,7 @@ export default function RegistrationForm() {
           min={minDate}
           max={maxDate}
           onChange={handleChange}
+          required
           className={field}
         />
       </div>
@@ -153,11 +159,14 @@ export default function RegistrationForm() {
       </div> */}
 
       <div>
-        <label className={label}>Grade / Class</label>
+        <label className={label}>
+          Grade / Class <span className="text-red-500">*</span>
+        </label>
         <select
           name="course"
           value={form.course}
           onChange={handleChange}
+          required
           className={field}
         >
           <option value="">Select a grade</option>
@@ -170,11 +179,14 @@ export default function RegistrationForm() {
       </div>
 
       <div>
-        <label className={label}>Gender</label>
+        <label className={label}>
+          Gender <span className="text-red-500">*</span>
+        </label>
         <select
           name="gender"
           value={form.gender}
           onChange={handleChange}
+          required
           className={field}
         >
           <option value="">Select gender</option>
@@ -185,13 +197,16 @@ export default function RegistrationForm() {
       </div>
 
       <div className="md:col-span-2">
-        <label className={label}>Address</label>
+        <label className={label}>
+          Address <span className="text-red-500">*</span>
+        </label>
         <textarea
           name="address"
           value={form.address}
           onChange={handleChange}
           placeholder="Street, City, State"
           rows={4}
+          required
           className={field}
         />
       </div>
