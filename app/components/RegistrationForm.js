@@ -222,7 +222,7 @@ export default function RegistrationForm() {
           <input
             type="checkbox"
             name="consent"
-            da-trigger="student_registration_for_bright_institute"
+            da-trigger="bright_school_student_registration"
             checked={form.consent}
             onChange={handleChange}
             className="h-4 w-4 rounded border-brand-300 text-brand-500 focus:ring-2 focus:ring-brand-500/30 cursor-pointer"
